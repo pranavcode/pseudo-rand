@@ -22,17 +22,17 @@
 using namespace std;
 
 // Get a random number from the range (inclusive)                                                                                                                                                             
-double get_rand_from_range(double min, double max) {
+int get_rand_from_range(double min, double max) {
   random_device rd;
   mt19937 gen(rd());
-  uniform_real_distribution<> dist(min, max+1);
+  uniform_int_distribution<> dist(min, max+1);
 
   return dist(gen);
 }
 
 // Computes the object distribution                                                                                                                                                                           
-vector<long> gen_object_distribution(int bucket_count, int object_count) {
-  vector<long> r(bucket_count, 1);
+vector<int> gen_object_distribution(int bucket_count, int object_count) {
+  vector<int> r(bucket_count, 1);
 
   for(int iter = 0; iter < (object_count - bucket_count); ++iter) {
       r[get_rand_from_range(0, bucket_count-1)]++;
@@ -42,9 +42,9 @@ vector<long> gen_object_distribution(int bucket_count, int object_count) {
 }
 
 int main(int argc, char *argv[]) {
-  long bucket_count = 10, object_count = 100;
-  long test_sum = 0;
-  vector<long> distribution;
+  int bucket_count = 10, object_count = 100;
+  int test_sum = 0;
+  vector<int> distribution;
 
   if(argc < 3) {
     cout << "Usage: " <<argv[0] << " <buckets> <objects>. Now using default values >"
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
   distribution = gen_object_distribution(bucket_count, object_count);
 
   cout << "Distribution:" << endl;
-  for(vector<long>::size_type bid = 0; bid < distribution.size(); ++bid) {
+  for(vector<int>::size_type bid = 0; bid < distribution.size(); ++bid) {
     cout <<"[Bucket " << (bid+1) << ":\t" << distribution[bid] << " objects]\n";
     test_sum += distribution[bid];
   }
