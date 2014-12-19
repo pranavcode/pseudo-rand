@@ -1,18 +1,18 @@
-// Problem: Randomly distribute fixed number of objects into                                                                                                                                                  
-//          fixed number of buckets. Each bucket should atleast                                                                                                                                               
-//          have a object.                                                                                                                                                                                    
-//                                                                                                                                                                                                            
-// Solution Algorithm:                                                                                                                                                                                        
-//          1) Put one object into each bucket.                                                                                                                                                               
-//          2) For each remaining object put it                                                                                                                                                               
-//             into randomly selected bucket.                                                                                                                                                                 
-//                                                                                                                                                                                                            
+// Problem: Randomly distribute fixed number of objects into
+//          fixed number of buckets. Each bucket should atleast
+//          have an object.
+//
+// Solution Algorithm:
+//          1) Put one object into each bucket.
+//          2) For each remaining object put it
+//             into randomly selected bucket.
+//
 // Copyright (c) 2014 Pranav Kulkarni
 // Copyright (c) 2014 Nishant Singh
 // Copyright (c) 2014 Rohan Sharma
 //
 // See the file license.txt for copying permission.
-//                                                                                                                                                                                                            
+//
 
 #include <cmath>
 #include <iostream>
@@ -21,7 +21,7 @@
 
 using namespace std;
 
-// Get a random number from the range (inclusive)                                                                                                                                                             
+// Get a random number from the range (inclusive)
 int get_rand_from_range(double min, double max) {
   random_device rd;
   mt19937 gen(rd());
@@ -30,7 +30,7 @@ int get_rand_from_range(double min, double max) {
   return dist(gen);
 }
 
-// Computes the object distribution                                                                                                                                                                           
+// Computes the object distribution
 vector<int> gen_object_distribution(int bucket_count, int object_count) {
   vector<int> r(bucket_count, 1);
 
